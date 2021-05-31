@@ -1,12 +1,13 @@
 <template>
   <div id="app" class="container">
-    <input
+    <textarea
       class="input"
       :value="input"
-      @input="onInputChange"
+      autofocus
       placeholder="Tap on the virtual keyboard to start"
     />
-    <Keyboard class="keyboard" />
+    <button class="reset-btn" @click="input = ''">Reset Textbox</button>
+    <Keyboard class="keyboard" @keyValue="updateInput" />
   </div>
 </template>
 
@@ -19,7 +20,34 @@ import Keyboard from "./components/Keyboard.vue";
     Keyboard,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  input = "";
+  isCapsLockOn = true;
+  updateInput(e: any) {
+    switch (e) {
+      case "backspace":
+        this.input = this.input.substring(0, this.input.length - 1);
+        break;
+      case "capsLock":
+        this.isCapsLockOn = !this.isCapsLockOn;
+        break;
+      case "spacebar":
+        this.input += " ";
+        break;
+      case "tab":
+        this.input += "    ";
+        break;
+      case "enter":
+        this.input += "\n";
+        break;
+      default:
+        this.input +=
+          this.isCapsLockOn === true && typeof e === "string"
+            ? e.toLowerCase()
+            : e;
+    }
+  }
+}
 </script>
 
 <style>
@@ -27,7 +55,7 @@ export default class App extends Vue {}
   border: 3px solid black;
   margin: 0;
   background: indianred;
-  height: 90vh;
+  height: 98vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -38,7 +66,7 @@ export default class App extends Vue {}
 .input {
   width: 70%;
   margin: 0 auto;
-  height: 100px;
+  height: 200px;
   padding: 20px;
   font-size: 20px;
   border: none;
@@ -48,9 +76,15 @@ export default class App extends Vue {}
 .keyboard {
   width: 70%;
   height: 40vh;
-  padding: 20px;
+  padding: 10px;
   font-size: 20px;
-
   background: white;
+}
+
+.reset-btn {
+  font-size: 1.5rem;
+  padding: 0.5rem 2rem;
+  background-color: indigo;
+  color: white;
 }
 </style>
