@@ -1,5 +1,5 @@
 <template>
-  <div id="kbd" class="keyboard">
+  <div class="keyboard">
     <div class="keyboardRow">
       <button
         class="keyboardKey flex"
@@ -39,13 +39,13 @@
       </button>
 
       <button
-        id="Backspace"
         class="keyboardKey keyboardKeyBackspace"
         @click="pressed('backspace')"
       >
         <span> <i class="fas fa-arrow-left"></i> Backspace</span>
       </button>
     </div>
+
     <div class="keyboardRow">
       <Button class="keyboardKey keyboardKeyTab" @click="pressed('tab')"
         ><span>Tab</span></Button
@@ -80,9 +80,9 @@
         <span>{{ secondRowSpecialCharacter[2].second }}</span>
       </button>
     </div>
+
     <div class="keyboardRow">
       <button
-        id="CapsLock"
         :class="{
           greenColor: showCapsSelected,
           keyboardKey: true,
@@ -118,9 +118,9 @@
         <span>Enter</span>
       </button>
     </div>
+
     <div class="keyboardRow">
       <button
-        id="ShiftLeft"
         :class="{
           greenColor: showShiftLeftSelected,
           keyboardKey: true,
@@ -174,47 +174,36 @@
         <span> <i class="fas fa-arrow-up"></i> Shift</span>
       </button>
     </div>
+
     <div class="keyboardRow">
       <button class="keyboardKey"><span>Ctrl</span></button>
-      <button id="ControlLeft" class="keyboardKey"><span>Fun</span></button>
-      <button id="AltLeft" class="keyboardKey">
+      <button class="keyboardKey"><span>Fun</span></button>
+      <button class="keyboardKey">
         <span><i class="fab fa-windows"></i></span>
       </button>
-      <button id="MetaLeft" class="keyboardKey keyboardKeyAlt">
+      <button class="keyboardKey keyboardKeyAlt">
         <span>Alt</span>
       </button>
-      <button
-        id="Space"
-        class="keyboardKey keyboardKeySpace"
-        @click="pressed('spacebar')"
-      >
+      <button class="keyboardKey keyboardKeySpace" @click="pressed('spacebar')">
         <span> Spacebar</span>
       </button>
-      <button id="MetaRight" class="keyboardKey keyboardKeyAlt">
+      <button class="keyboardKey keyboardKeyAlt">
         <span>Alt</span>
       </button>
-      <button id="AltRight" class="keyboardKey"><span>Ctrl</span></button>
+      <button class="keyboardKey"><span>Ctrl</span></button>
       <button
-        id="ArrowLeft"
         class="keyboardKey keyboardArrowKeys keyboardKeyArrowLeft"
         @click="pressed('arrowLeft')"
       >
         <span><i class="fas fa-arrow-left"></i></span>
       </button>
-      <button
-        id="ArrowUp"
-        class="keyboardKey keyboardArrowKeys keyboardKeyArrowUp"
-      >
+      <button class="keyboardKey keyboardArrowKeys keyboardKeyArrowUp">
         <span> <i class="fas fa-arrow-up"></i></span>
       </button>
-      <button
-        id="ArrowDown"
-        class="keyboardKey keyboardArrowKeys keyboardKeyArrowDown"
-      >
+      <button class="keyboardKey keyboardArrowKeys keyboardKeyArrowDown">
         <span><i class="fas fa-arrow-down"></i></span>
       </button>
       <button
-        id="ArrowRight"
         class="keyboardKey keyboardArrowKeys keyboardKeyArrowRight"
         @click="pressed('arrowRight')"
       >
