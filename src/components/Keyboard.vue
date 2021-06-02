@@ -229,7 +229,6 @@
 
 <script lang="ts">
 import {
-  KeyType,
   ArrowKeys,
   firstRowSpecialCharacter,
   secondRowSpecialCharacter,
@@ -242,8 +241,6 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class Keyboard extends Vue {
-  @Prop() private big!: string;
-
   digitsCharsObj = digitsCharsObj;
   firstRowSpecialCharacter = firstRowSpecialCharacter;
   secondRowSpecialCharacter = secondRowSpecialCharacter;
@@ -285,6 +282,8 @@ export default class Keyboard extends Vue {
     } else {
       this.$emit("keyValue", value);
     }
+
+    ///shuffle keys feature
     if (value.length === 1) {
       this.shuffleAlphabetKeys();
     }

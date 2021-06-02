@@ -38,9 +38,8 @@ export default class App extends Vue {
   numOfRows = [5, 4, 3, 2, 1];
   isCapsLockOn = true;
   selectedNumOfRow = 5;
-  moveLeft = 0;
-  moveRight = 0;
-
+  move = 0;
+  currentCursor = 0;
   created() {
     let data: any = localStorage.getItem("textData");
     if (data) {
@@ -86,25 +85,22 @@ export default class App extends Vue {
     localStorage.setItem("textData", this.input);
     return this.input;
   }
-  get move() {
-    return this.input.length;
-  }
 
-  set move(data: number) {
-    let datacheck: number = data;
-  }
   arrowMovement(where?: string) {
     let textArea: any = document.querySelector("#textarea");
 
     if (textArea && textArea.setSelectionRange) {
       textArea.focus();
-
-      if (where === "arrowLeft") {
-        this.move--;
+      if (!where) {
+        textArea.setSelectionRange(this.input.length, this.input.length);
+      } else if (where === "arrowLeft") {
+        this.move += 1;
+        this.currentCursor = this.input.length - this.move;
+        textArea.setSelectionRange(this.input.length, this.currentCursor);
       } else {
-        this.move++;
+        this.currentCursor += 1;
+        textArea.setSelectionRange(this.input.length, this.currentCursor);
       }
-      textArea.setSelectionRange(this.input.length, this.move);
     }
   }
 }
