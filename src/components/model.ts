@@ -1,8 +1,8 @@
 export const enum ArrowKeys {
-  ArrowUp = "Arrow Up",
-  ArrowRight = "Arrow Right",
-  ArrowLeft = "Arrow Left",
-  ArrrowBotton = "Arrow Down",
+  ArrowUp = " arrowUp",
+  ArrowRight = "arrowRight",
+  ArrowLeft = "arrowLeft",
+  ArrrowBotton = "arrowDown",
 }
 
 export const digitsCharsObj = [

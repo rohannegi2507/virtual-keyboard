@@ -20,6 +20,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Keyboard from "./components/Keyboard.vue";
+import { ArrowKeys } from "./components/model";
 
 @Component({
   components: {
@@ -29,9 +30,7 @@ import Keyboard from "./components/Keyboard.vue";
 export default class App extends Vue {
   input = "";
   isCapsLockOn = true;
-  selectedNumOfRow = 5;
-  move = 0;
-  currentCursor = 0;
+  textArea: any = document.querySelector("#textarea");
 
   created() {
     let data: any = localStorage.getItem("textData");
@@ -58,11 +57,11 @@ export default class App extends Vue {
       case "enter":
         this.input += "\n";
         break;
-      case "arrowLeft":
-        this.arrowMovement(e);
+      case ArrowKeys.ArrowLeft:
+        this.updateCursorMovement(e);
         break;
-      case "arrowRight":
-        this.arrowMovement(e);
+      case ArrowKeys.ArrowRight:
+        this.updateCursorMovement(e);
         break;
       default:
         this.input +=
@@ -74,25 +73,28 @@ export default class App extends Vue {
 
   get inputData() {
     let len = this.input.length;
-    this.arrowMovement();
+    this.updateCursorMovement();
     localStorage.setItem("textData", this.input);
     return this.input;
   }
 
-  arrowMovement(where?: string) {
+  updateCursorMovement(where?: string) {
     let textArea: any = document.querySelector("#textarea");
 
     if (textArea && textArea.setSelectionRange) {
       textArea.focus();
       if (!where) {
         textArea.setSelectionRange(this.input.length, this.input.length);
-      } else if (where === "arrowLeft") {
-        this.move += 1;
-        this.currentCursor = this.input.length - this.move;
-        textArea.setSelectionRange(this.input.length, this.currentCursor);
-      } else {
-        this.currentCursor += 1;
-        textArea.setSelectionRange(this.input.length, this.currentCursor);
+      } else if (where === ArrowKeys.ArrowLeft) {
+        textArea.setSelectionRange(
+          this.input.length,
+          textArea.selectionStart - 1
+        );
+      } else if (where === ArrowKeys.ArrowRight) {
+        textArea.setSelectionRange(
+          this.input.length,
+          textArea.selectionStart + 1
+        );
       }
     }
   }
