@@ -1,8 +1,8 @@
 <template>
   <div id="kbd" class="keyboard">
-    <div class="keyboard__row">
+    <div class="keyboardRow">
       <button
-        class="keyboard__key flex"
+        class="keyboardKey flex"
         @click="pressed(firstRowSpecialCharacter[0])"
       >
         <span>{{ firstRowSpecialCharacter[0].first }}</span>
@@ -11,27 +11,27 @@
       <button
         v-for="digitChar in digitsCharsObj"
         :key="digitChar.second"
-        class="keyboard__key flex"
+        class="keyboardKey flex"
         @click="pressed(digitChar)"
       >
         <span>{{ digitChar.first }}</span> <span>{{ digitChar.second }}</span>
       </button>
       <button
-        class="keyboard__key flex"
+        class="keyboardKey flex"
         @click="pressed(firstRowSpecialCharacter[1])"
       >
         <span>{{ firstRowSpecialCharacter[1].first }}</span>
         <span>{{ firstRowSpecialCharacter[1].second }}</span>
       </button>
       <button
-        class="keyboard__key flex"
+        class="keyboardKey flex"
         @click="pressed(firstRowSpecialCharacter[2])"
       >
         <span>{{ firstRowSpecialCharacter[2].first }}</span>
         <span>{{ firstRowSpecialCharacter[2].second }}</span>
       </button>
       <button
-        class="keyboard__key flex"
+        class="keyboardKey flex"
         @click="pressed(firstRowSpecialCharacter[3])"
       >
         <span>{{ firstRowSpecialCharacter[3].first }}</span>
@@ -40,53 +40,53 @@
 
       <button
         id="Backspace"
-        class="keyboard__key keyboard__key--w2"
+        class="keyboardKey keyboardKeyBackspace"
         @click="pressed('backspace')"
       >
         <span> <i class="fas fa-arrow-left"></i> Backspace</span>
       </button>
     </div>
-    <div class="keyboard__row">
-      <Button class="keyboard__key keyboard__key--w1-5" @click="pressed('tab')"
+    <div class="keyboardRow">
+      <Button class="keyboardKey keyboardKeyTab" @click="pressed('tab')"
         ><span>Tab</span></Button
       >
       <Button
         v-for="char in alphaCharsRow1"
         :key="char"
-        class="keyboard__key"
+        class="keyboardKey"
         @click="pressed(char)"
         ><span>{{ char }}</span></Button
       >
 
       <button
-        class="keyboard__key flex"
+        class="keyboardKey flex"
         @click="pressed(secondRowSpecialCharacter[0])"
       >
         <span>{{ secondRowSpecialCharacter[0].first }}</span>
         <span>{{ secondRowSpecialCharacter[0].second }}</span>
       </button>
       <button
-        class="keyboard__key flex"
+        class="keyboardKey flex"
         @click="pressed(secondRowSpecialCharacter[1])"
       >
         <span>{{ secondRowSpecialCharacter[1].first }}</span>
         <span>{{ secondRowSpecialCharacter[1].second }}</span>
       </button>
       <button
-        class="keyboard__key keyboard__key--w1-5 flex-end-space"
+        class="keyboardKey keyboardKeyTab flex-end-space"
         @click="pressed(secondRowSpecialCharacter[2])"
       >
         <span>{{ secondRowSpecialCharacter[2].first }}</span>
         <span>{{ secondRowSpecialCharacter[2].second }}</span>
       </button>
     </div>
-    <div class="keyboard__row">
+    <div class="keyboardRow">
       <button
         id="CapsLock"
         :class="{
           greenColor: showCapsSelected,
-          keyboard__key: true,
-          'keyboard__key--w1-75': true,
+          keyboardKey: true,
+          keyboardKeyCapsLock: true,
         }"
         @click="capsLockEvent()"
       >
@@ -95,39 +95,36 @@
       <button
         v-for="char in alphaCharsRow2"
         :key="char"
-        class="keyboard__key"
+        class="keyboardKey"
         @click="pressed(char)"
       >
         <span>{{ char }}</span>
       </button>
       <button
-        class="keyboard__key flex"
+        class="keyboardKey flex"
         @click="pressed(thirdRowSpecialCharacter[0])"
       >
         <span>{{ thirdRowSpecialCharacter[0].first }}</span>
         <span>{{ thirdRowSpecialCharacter[0].second }}</span>
       </button>
       <button
-        class="keyboard__key flex"
+        class="keyboardKey flex"
         @click="pressed(thirdRowSpecialCharacter[1])"
       >
         <span>{{ thirdRowSpecialCharacter[1].first }}</span>
         <span>{{ thirdRowSpecialCharacter[1].second }}</span>
       </button>
-      <button
-        class="keyboard__key keyboard__key--w2-25"
-        @click="pressed('enter')"
-      >
+      <button class="keyboardKey keyboardKeyEnter" @click="pressed('enter')">
         <span>Enter</span>
       </button>
     </div>
-    <div class="keyboard__row">
+    <div class="keyboardRow">
       <button
         id="ShiftLeft"
         :class="{
           greenColor: showShiftLeftSelected,
-          keyboard__key: true,
-          'keyboard__key--w2-75': true,
+          keyboardKey: true,
+          keyboardKeyShift: true,
 
           'flex-start': true,
         }"
@@ -139,26 +136,26 @@
       <Button
         v-for="char in alphaCharsRow3"
         :key="char"
-        class="keyboard__key"
+        class="keyboardKey"
         @click="pressed(char)"
         ><span>{{ char }}</span></Button
       >
       <button
-        class="keyboard__key flex"
+        class="keyboardKey flex"
         @click="pressed(fourthRowSpecialCharacter[0])"
       >
         <span>{{ fourthRowSpecialCharacter[0].first }}</span>
         <span>{{ fourthRowSpecialCharacter[0].second }}</span>
       </button>
       <button
-        class="keyboard__key flex"
+        class="keyboardKey flex"
         @click="pressed(fourthRowSpecialCharacter[1])"
       >
         <span>{{ fourthRowSpecialCharacter[1].first }}</span>
         <span>{{ fourthRowSpecialCharacter[1].second }}</span>
       </button>
       <button
-        class="keyboard__key flex"
+        class="keyboardKey flex"
         @click="pressed(fourthRowSpecialCharacter[2])"
       >
         <span>{{ fourthRowSpecialCharacter[2].first }}</span>
@@ -167,8 +164,8 @@
       <button
         :class="{
           greenColor: showShiftRightSelected,
-          keyboard__key: true,
-          'keyboard__key--w2-75': true,
+          keyboardKey: true,
+          keyboardKeyShift: true,
 
           'flex-start': true,
         }"
@@ -177,48 +174,48 @@
         <span> <i class="fas fa-arrow-up"></i> Shift</span>
       </button>
     </div>
-    <div class="keyboard__row">
-      <button class="keyboard__key"><span>Ctrl</span></button>
-      <button id="ControlLeft" class="keyboard__key"><span>Fun</span></button>
-      <button id="AltLeft" class="keyboard__key">
+    <div class="keyboardRow">
+      <button class="keyboardKey"><span>Ctrl</span></button>
+      <button id="ControlLeft" class="keyboardKey"><span>Fun</span></button>
+      <button id="AltLeft" class="keyboardKey">
         <span><i class="fab fa-windows"></i></span>
       </button>
-      <button id="MetaLeft" class="keyboard__key keyboard__key--w1-25">
+      <button id="MetaLeft" class="keyboardKey keyboardKeyAlt">
         <span>Alt</span>
       </button>
       <button
         id="Space"
-        class="keyboard__key keyboard__key--space"
+        class="keyboardKey keyboardKeySpace"
         @click="pressed('spacebar')"
       >
         <span> Spacebar</span>
       </button>
-      <button id="MetaRight" class="keyboard__key keyboard__key--w1-25">
+      <button id="MetaRight" class="keyboardKey keyboardKeyAlt">
         <span>Alt</span>
       </button>
-      <button id="AltRight" class="keyboard__key"><span>Ctrl</span></button>
+      <button id="AltRight" class="keyboardKey"><span>Ctrl</span></button>
       <button
         id="ArrowLeft"
-        class="keyboard__key keyboard__key--h0-5 keyboard__key-arrow-left"
+        class="keyboardKey keyboardArrowKeys keyboardKeyArrowLeft"
         @click="pressed('arrowLeft')"
       >
         <span><i class="fas fa-arrow-left"></i></span>
       </button>
       <button
         id="ArrowUp"
-        class="keyboard__key keyboard__key--h0-5 keyboard__key-arrow-up"
+        class="keyboardKey keyboardArrowKeys keyboardKeyArrowUp"
       >
         <span> <i class="fas fa-arrow-up"></i></span>
       </button>
       <button
         id="ArrowDown"
-        class="keyboard__key keyboard__key--h0-5 keyboard__key-arrow-down"
+        class="keyboardKey keyboardArrowKeys keyboardKeyArrowDown"
       >
         <span><i class="fas fa-arrow-down"></i></span>
       </button>
       <button
         id="ArrowRight"
-        class="keyboard__key keyboard__key--h0-5 keyboard__key-arrow-right"
+        class="keyboardKey keyboardArrowKeys keyboardKeyArrowRight"
         @click="pressed('arrowRight')"
       >
         <span><i class="fas fa-arrow-right"></i></span>
@@ -229,7 +226,6 @@
 
 <script lang="ts">
 import {
-  ArrowKeys,
   firstRowSpecialCharacter,
   secondRowSpecialCharacter,
   thirdRowSpecialCharacter,
@@ -266,11 +262,13 @@ export default class Keyboard extends Vue {
       this.showShiftLeftSelected = !this.showShiftLeftSelected;
     else this.showShiftRightSelected = !this.showShiftRightSelected;
   }
+
   shuffleAlphabetKeys() {
     this.alphaCharsRow1.sort(() => Math.random() - 0.5);
     this.alphaCharsRow2.sort(() => Math.random() - 0.5);
     this.alphaCharsRow3.sort(() => Math.random() - 0.5);
   }
+
   pressed(value: any) {
     if (
       (this.showShiftLeftSelected || this.showShiftRightSelected) &&
@@ -295,30 +293,6 @@ export default class Keyboard extends Vue {
 <style scoped>
 @import url("https://use.fontawesome.com/releases/v5.9.0/css/all.css");
 
-button {
-  font-size: 1.5rem;
-  padding: 5px, 5px;
-  background-color: black;
-  color: white;
-  cursor: pointer;
-  outline-offset: 4px;
-}
-
-span {
-  display: block;
-  color: white;
-  transform: translateY(-6px);
-}
-
-button:active span {
-  transform: translateY(-2px);
-}
-
-.greenColor {
-  background-color: green;
-  color: white;
-}
-
 .keyboard {
   width: 1550px;
   height: 400px;
@@ -329,14 +303,14 @@ button:active span {
   overflow: auto;
 }
 
-.keyboard__row {
+.keyboardRow {
   display: grid;
   gap: 3px;
   grid-template-columns: repeat(60, 1fr);
   grid-template-rows: 1fr 1fr;
 }
 
-.keyboard__key {
+.keyboardKey {
   height: 100%;
   width: 100%;
   grid-column: span 4;
@@ -347,55 +321,55 @@ button:active span {
   padding: 5px, 0;
 }
 
-.keyboard__key--h0-5 {
+.keyboardArrowKeys {
   grid-row: span 1;
 }
 
-.keyboard__key-arrow-up {
+.keyboardKeyArrowUp {
   grid-row: 1;
   grid-column-end: -5;
 }
 
-.keyboard__key-arrow-down {
+.keyboardKeyArrowDown {
   grid-column-end: -5;
   grid-row: 2;
 }
 
-.keyboard__key-arrow-left {
+.keyboardKeyArrowLeft {
   grid-column-end: -9;
   grid-row: 2;
 }
 
-.keyboard__key-arrow-right {
+.keyboardKeyArrowRight {
   grid-column-end: -1;
   grid-row: 2;
 }
 
-.keyboard__key--w1-25 {
+.keyboardKeyAlt {
   grid-column: span 5;
 }
 
-.keyboard__key--w1-5 {
+.keyboardKeyTab {
   grid-column: span 6;
 }
 
-.keyboard__key--w1-75 {
+.keyboardKeyCapsLock {
   grid-column: span 7;
 }
 
-.keyboard__key--w2 {
+.keyboardKeyBackspace {
   grid-column: span 8;
 }
 
-.keyboard__key--w2-25 {
+.keyboardKeyEnter {
   grid-column: span 9;
 }
 
-.keyboard__key--w2-75 {
+.keyboardKeyShift {
   grid-column: span 10;
 }
 
-.keyboard__key--space {
+.keyboardKeySpace {
   grid-column: span 22;
 }
 
@@ -436,5 +410,29 @@ span {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
+}
+
+button {
+  font-size: 1.5rem;
+  padding: 5px, 5px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  outline-offset: 4px;
+}
+
+span {
+  display: block;
+  color: white;
+  transform: translateY(-6px);
+}
+
+button:active span {
+  transform: translateY(-2px);
+}
+
+.greenColor {
+  background-color: green;
+  color: white;
 }
 </style>

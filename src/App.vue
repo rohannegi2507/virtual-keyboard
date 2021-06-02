@@ -8,13 +8,6 @@
       placeholder="Tap on the virtual keyboard to start"
     />
     <button class="reset-btn" @click="input = ''">Reset Textbox</button>
-    <span class="label"
-      >Please select number for rows for keyboard:
-      <select class="selectTag" v-model="selectedNumOfRow">
-        <option v-for="row in numOfRows" :key="row">{{ row }}</option>
-      </select>
-    </span>
-
     <Keyboard
       class="keyboard"
       big=""
@@ -35,11 +28,11 @@ import Keyboard from "./components/Keyboard.vue";
 })
 export default class App extends Vue {
   input = "";
-  numOfRows = [5, 4, 3, 2, 1];
   isCapsLockOn = true;
   selectedNumOfRow = 5;
   move = 0;
   currentCursor = 0;
+
   created() {
     let data: any = localStorage.getItem("textData");
     if (data) {
@@ -141,16 +134,5 @@ body {
   padding: 0.5rem 2rem;
   background-color: indigo;
   color: white;
-}
-
-.label {
-  color: white;
-  font-size: 2rem;
-}
-
-.selectTag {
-  display: inline;
-  padding: 0.5rem 1rem;
-  font-size: 1.5rem;
 }
 </style>
