@@ -72,7 +72,6 @@ export default class App extends Vue {
   }
 
   get inputData() {
-    let len = this.input.length;
     this.updateCursorMovement();
     localStorage.setItem("textData", this.input);
     return this.input;
