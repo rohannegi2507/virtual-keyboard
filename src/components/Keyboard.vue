@@ -181,13 +181,13 @@
       <button class="keyboardKey">
         <span><i class="fab fa-windows"></i></span>
       </button>
-      <button class="keyboardKey keyboardKeyAlt">
+      <button class="keyboardKey">
         <span>Alt</span>
       </button>
       <button class="keyboardKey keyboardKeySpace" @click="pressed('spacebar')">
         <span> Spacebar</span>
       </button>
-      <button class="keyboardKey keyboardKeyAlt">
+      <button class="keyboardKey">
         <span>Alt</span>
       </button>
       <button class="keyboardKey"><span>Ctrl</span></button>
@@ -283,30 +283,27 @@ export default class Keyboard extends Vue {
 @import url("https://use.fontawesome.com/releases/v5.9.0/css/all.css");
 
 .keyboard {
-  width: 1550px;
+  width: 1600px;
   height: 400px;
   background: white;
   display: grid;
-  gap: 2px;
   border-radius: 10px;
   overflow: auto;
+  gap: 3px;
 }
 
 .keyboardRow {
   display: grid;
   gap: 3px;
   grid-template-columns: repeat(60, 1fr);
-  grid-template-rows: 1fr 1fr;
 }
 
 .keyboardKey {
-  height: 100%;
-  width: 100%;
   grid-column: span 4;
   grid-row: span 2;
-  border-radius: 6px;
+  border-radius: 5px;
   border: 1px solid black;
-  transition: 0.05s background ease-in;
+  transition: 0.05s;
   padding: 5px, 0;
 }
 
@@ -315,13 +312,11 @@ export default class Keyboard extends Vue {
 }
 
 .keyboardKeyArrowUp {
-  grid-row: 1;
   grid-column-end: -5;
 }
 
 .keyboardKeyArrowDown {
   grid-column-end: -5;
-  grid-row: 2;
 }
 
 .keyboardKeyArrowLeft {
@@ -332,10 +327,6 @@ export default class Keyboard extends Vue {
 .keyboardKeyArrowRight {
   grid-column-end: -1;
   grid-row: 2;
-}
-
-.keyboardKeyAlt {
-  grid-column: span 5;
 }
 
 .keyboardKeyTab {
@@ -359,19 +350,7 @@ export default class Keyboard extends Vue {
 }
 
 .keyboardKeySpace {
-  grid-column: span 22;
-}
-
-.two_value {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-evenly;
-  padding: 0 5px;
-}
-
-span {
-  margin: 0;
-  padding: 0;
+  grid-column: span 24;
 }
 
 .flex {
@@ -407,7 +386,6 @@ button {
   background-color: black;
   color: white;
   cursor: pointer;
-  outline-offset: 4px;
 }
 
 span {
@@ -422,6 +400,5 @@ button:active span {
 
 .greenColor {
   background-color: green;
-  color: white;
 }
 </style>
