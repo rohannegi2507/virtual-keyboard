@@ -117,7 +117,6 @@ body {
 
 .input {
   width: 70%;
-  margin: 0 auto;
   height: 200px;
   padding: 20px;
   font-size: 20px;
