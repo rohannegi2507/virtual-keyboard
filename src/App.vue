@@ -1,6 +1,7 @@
 <template>
   <div id="app" class="container">
     <textarea
+      readonly
       id="textarea"
       class="input"
       :value="inputData"
