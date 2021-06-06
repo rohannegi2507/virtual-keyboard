@@ -116,22 +116,21 @@ body {
 }
 
 .input {
-  width: 65%;
-  min-height: 200px;
+  min-width: 65%;
+  min-height: 30vh;
   padding: 20px;
   font-size: 20px;
 }
 
 .keyboard {
-  min-width: 40vh;
+  min-width: 30vh;
   min-height: 40vh;
-  padding: 1vh;
-  font-size: 20px;
+  padding: 0.5vh;
   background: white;
 }
 
 .reset-btn {
-  font-size: 2.5vh;
+  font-size: 2vh;
   padding: 0.5rem 2rem;
   background-color: indigo;
   color: white;

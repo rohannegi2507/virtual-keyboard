@@ -283,13 +283,13 @@ export default class Keyboard extends Vue {
 @import url("https://use.fontawesome.com/releases/v5.9.0/css/all.css");
 
 .keyboard {
-  min-width: 00px;
-  min-height: 200px;
+  min-width: 30vh;
+  min-height: 20vh;
   background: white;
   display: grid;
   border-radius: 10px;
   overflow: auto;
-  gap: 3px;
+  gap: 2px;
 }
 
 .keyboardRow {
@@ -301,7 +301,7 @@ export default class Keyboard extends Vue {
 .keyboardKey {
   grid-column: span 4;
   grid-row: span 2;
-  border-radius: 5px;
+  border-radius: 0.3vh;
   border: 1px solid black;
   transition: 0.05s;
   padding: 5px, 0;
@@ -382,7 +382,7 @@ export default class Keyboard extends Vue {
 
 button {
   font-size: 2.5vh;
-  padding: 5px, 5px;
+  padding: 0.5vh 1vh;
   background-color: black;
   color: white;
   cursor: pointer;
@@ -404,8 +404,8 @@ button:active span {
 
 @media (max-width: 800px) {
   button {
-    font-size: 1.5vh;
-    padding: 5px, 5px;
+    font-size: 1vh;
+    padding: 1vh 0.5vh 0 0.2vh;
     background-color: black;
     color: white;
     cursor: pointer;
