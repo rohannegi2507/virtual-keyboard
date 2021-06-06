@@ -1,7 +1,6 @@
 <template>
   <div id="app" class="container">
     <textarea
-      readonly
       id="textarea"
       class="input"
       :value="inputData"
@@ -11,7 +10,6 @@
     <button class="reset-btn" @click="input = ''">Reset Textbox</button>
     <Keyboard
       class="keyboard"
-      big=""
       @keyValue="updateInput"
       @capsLockPressed="updateCapsLock"
     />
@@ -31,7 +29,6 @@ import { ArrowKeys } from "./components/model";
 export default class App extends Vue {
   input = "";
   isCapsLockOn = true;
-  textArea: any = document.querySelector("#textarea");
 
   created() {
     let data: any = localStorage.getItem("textData");
@@ -116,7 +113,7 @@ body {
 }
 
 .input {
-  min-width: 65%;
+  min-width: 50%;
   min-height: 30vh;
   padding: 20px;
   font-size: 20px;

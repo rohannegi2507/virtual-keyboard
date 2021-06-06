@@ -287,7 +287,7 @@ export default class Keyboard extends Vue {
   min-height: 20vh;
   background: white;
   display: grid;
-  border-radius: 10px;
+  border-radius: 5px;
   overflow: auto;
   gap: 2px;
 }
@@ -381,7 +381,7 @@ export default class Keyboard extends Vue {
 }
 
 button {
-  font-size: 2.5vh;
+  font-size: 2vh;
   padding: 0.5vh 1vh;
   background-color: black;
   color: white;
